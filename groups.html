@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 FIFA 북중미 월드컵 포털 - 조별리그 결과</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome 아이콘 CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans KR', 'sans-serif'],
+                    },
+                    colors: {
+                        wcGreen: '#00FF87',
+                        wcBlue: '#00F0FF',
+                        wcDark: '#0B111E',
+                        wcCard: '#162238'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="text-white min-h-screen flex flex-col justify-between bg-[#0B111E]">
+
+    <!-- [공통 네비게이션 바] -->
+    <nav class="bg-slate-900 border-b border-cyan-500/30 sticky top-0 z-50 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- 로고 / 타이틀 -->
+                <div class="flex items-center gap-3">
+                    <span class="text-2xl animate-bounce">🏆</span>
+                    <a href="index.html" class="font-black text-transparent bg-clip-text bg-gradient-to-r from-wcGreen to-wcBlue tracking-wider text-lg">
+                        2026 WORLD CUP
+                    </a>
+                </div>
+
+                <!-- 데스크톱 메뉴 -->
+                <div class="hidden md:flex items-center space-x-2">
+                    <a href="index.html" class="px-4 py-2 rounded-md text-sm font-semibold transition-all duration-200 text-slate-400 hover:text-white hover:bg-slate-800">홈</a>
+                    <a href="intro.html" class="px-4 py-2 rounded-md text-sm font-semibold transition-all duration-200 text-slate-400 hover:text-white hover:bg-slate-800">소개</a>
+                    <a href="teams.html" class="px-4 py-2 rounded-md text-sm font-semibold transition-all duration-200 text-slate-400 hover:text-white hover:bg-slate-800">48개국 소개</a>
+                    <a href="groups.html" class="px-4 py-2 rounded-md text-sm font-semibold transition-all duration-200 bg-emerald-500/10 text-wcGreen border border-wcGreen/20">조별리그 결과</a>
+                    <a href="tournament.html" class="px-4 py-2 rounded-md text-sm font-semibold transition-all duration-200 text-slate-400 hover:text-white hover:bg-slate-800">토너먼트 결과</a>
+                </div>
+
+                <!-- 모바일 햄버거 버튼 -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-cyan-400 hover:bg-slate-800 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모바일 드롭다운 메뉴 -->
+        <div class="hidden md:hidden bg-slate-950 border-b border-cyan-500/20" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white">홈</a>
+                <a href="intro.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white">소개</a>
+                <a href="teams.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white">48개국 소개</a>
+                <a href="groups.html" class="block px-3 py-2 rounded-md text-base font-medium text-wcGreen bg-emerald-500/10">조별리그 결과</a>
+                <a href="tournament.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white">토너먼트 결과</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 메인 컨텐츠 영역 -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+        <h2 class="text-3xl sm:text-5xl font-black mb-3">본선 <span>조별리그 최종 상황판</span></h2>
+        <p class="text-slate-400 text-sm sm:text-base font-light mb-8">
+            본선 A조부터 L조까지의 최종 데이터 매칭 정보입니다. 녹색 라인은 각 조 1·2위 직행 진출 국가이며, 청색 라인은 치열한 와일드카드 전적을 통해 32강에 합류한 최종 3위 국가군입니다.
+        </p>
+
+        <!-- 조별 리그 그리드 리스트 (12개조) -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" id="groupsTableContainer">
+            <!-- JS에서 동적으로 고증된 순위 데이터 자동 삽입 -->
+        </div>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="bg-slate-950 border-t border-slate-900 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-slate-500 text-xs">
+            <p class="mb-2">&copy; 2026 FIFA World Cup 48-Nations Portal. All Rights Reserved.</p>
+            <p>본 사이트는 2026 북중미 월드컵 데이터의 실시간 고증을 전하는 공식 포털 프로토타입입니다.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 고증 데이터셋 (A~L) & ISO Code 매핑 추가
+        const groupsArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"];
+        const nationsData = [
+            { id: "kor", name: "대한민국", code: "kr", group: "Group A", rank: "22위", ace: "손흥민", formation: "4-2-3-1", record: "1승 2패", w: 1, d: 0, l: 2, gd: -1, pts: 3 },
+            { id: "mex", name: "멕시코", code: "mx", group: "Group A", rank: "15위", ace: "산티아고 히메네스", formation: "4-3-3", record: "3승", w: 3, d: 0, l: 0, gd: +6, pts: 9 },
+            { id: "rsa", name: "남아공", code: "za", group: "Group A", rank: "59위", ace: "퍼시 타우", formation: "4-4-2", record: "1승 1무 1패", w: 1, d: 1, l: 1, gd: -1, pts: 4 },
+            { id: "cze", name: "체코", code: "cz", group: "Group A", rank: "40위", ace: "파트리크 시크", formation: "3-4-3", record: "1무 2패", w: 0, d: 1, l: 2, gd: -4, pts: 1 },
+            
+            { id: "sui", name: "스위스", code: "ch", group: "Group B", rank: "19위", ace: "그라니트 자카", formation: "3-4-2-1", record: "2승 1무", w: 2, d: 1, l: 0, gd: +4, pts: 7 },
+            { id: "can", name: "캐나다", code: "ca", group: "Group B", rank: "49위", ace: "알폰소 데이비스", formation: "4-4-2", record: "1승 1무 1패", w: 1, d: 1, l: 1, gd: +1, pts: 4 },
+            { id: "bih", name: "보스니아", code: "ba", group: "Group B", rank: "74위", ace: "에딘 제코", formation: "4-1-4-1", record: "1승 1무 1패", w: 1, d: 1, l: 1, gd: 0, pts: 4 },
+            { id: "qat", name: "카타르", code: "qa", group: "Group B", rank: "34위", ace: "아크람 아피프", formation: "5-3-2", record: "1무 2패", w: 0, d: 1, l: 2, gd: -5, pts: 1 },
+
+            { id: "bra", name: "브라질", code: "br", group: "Group C", rank: "5위", ace: "비니시우스 주니어", formation: "4-2-3-1", record: "2승 1무", w: 2, d: 1, l: 0, gd: +5, pts: 7 },
+            { id: "mar", name: "모로코", code: "ma", group: "Group C", rank: "13위", ace: "아슈라프 하키미", formation: "4-3-3", record: "2승 1무", w: 2, d: 1, l: 0, gd: +3, pts: 7 },
+            { id: "sco", name: "스코틀랜드", code: "gb-sct", group: "Group C", rank: "39위", ace: "스콧 맥토미니", formation: "5-4-1", record: "1승 2패", w: 1, d: 0, l: 2, gd: -3, pts: 3 },
+            { id: "hai", name: "아이티", code: "ht", group: "Group C", rank: "86위", ace: "프란츠디 피에로", formation: "4-4-2", record: "3패", w: 0, d: 0, l: 3, gd: -5, pts: 0 },
+
+            { id: "usa", name: "미국", code: "us", group: "Group D", rank: "11위", ace: "크리스천 풀리식", formation: "4-3-3", record: "2승 1패", w: 2, d: 0, l: 1, gd: +4, pts: 6 },
+            { id: "aus", name: "호주", code: "au", group: "Group D", rank: "23위", ace: "잭슨 어바인", formation: "4-4-2", record: "1승 1무 1패", w: 1, d: 1, l: 1, gd: 0, pts: 4 },
+            { id: "par", name: "파라과이", code: "py", group: "Group D", rank: "56위", ace: "미구엘 알미론", formation: "4-3-3", record: "1승 1무 1패", w: 1, d: 1, l: 1, gd: -1, pts: 4 },
+            { id: "tur", name: "터키", code: "tr", group: "Group D", rank: "35위", ace: "아르다 귈러", formation: "4-2-3-1", record: "1승 2패", w: 1, d: 0, l: 2, gd: -3, pts: 3 },
+
+            { id: "ger", name: "독일", code: "de", group: "Group E", rank: "16위", ace: "자말 무시아라", formation: "4-2-3-1", record: "2승 1패", w: 2, d: 0, l: 1, gd: +4, pts: 6 },
+            { id: "civ", name: "코트디부아르", code: "ci", group: "Group E", rank: "38위", ace: "세바스티앙 알레", formation: "4-3-3", record: "2승 1패", w: 2, d: 0, l: 1, gd: +1, pts: 6 },
+            { id: "ecu", name: "에콰도르", code: "ec", group: "Group E", rank: "30위", ace: "모이세스 카이세도", formation: "4-2-3-1", record: "1승 1무 1패", w: 1, d: 1, l: 1, gd: 0, pts: 4 },
+            { id: "cur", name: "퀴라소", code: "cw", group: "Group E", rank: "85위", ace: "레안드로 바쿠나", formation: "4-5-1", record: "1무 2패", w: 0, d: 1, l: 2, gd: -5, pts: 1 },
+
+            { id: "ned", name: "네덜란드", code: "nl", group: "Group F", rank: "7위", ace: "버질 반 다이크", formation: "3-4-3", record: "2승 1무", w: 2, d: 1, l: 0, gd: +6, pts: 7 },
+            { id: "jpn", name: "일본", code: "jp", group: "Group F", rank: "17위", ace: "쿠보 타케후사", formation: "4-2-3-1", record: "1승 2무", w: 1, d: 2, l: 0, gd: +2, pts: 5 },
+            { id: "swe", name: "스웨덴", code: "se", group: "Group F", rank: "28위", ace: "알렉산더 이삭", formation: "4-4-2", record: "1승 1무 1패", w: 1, d: 1, l: 1, gd: 0, pts: 4 },
+            { id: "tun", name: "튀니지", code: "tn", group: "Group F", rank: "41위", ace: "엘리 스키리", formation: "3패", w: 0, d: 0, l: 3, gd: -8, pts: 0 },
+
+            { id: "bel", name: "벨기에", code: "be", group: "Group G", rank: "6위", ace: "케빈 더 브라위너", formation: "3-4-2-1", record: "1승 2무", w: 1, d: 2, l: 0, gd: +4, pts: 5 },
+            { id: "egy", name: "이집트", code: "eg", group: "Group G", rank: "36위", ace: "모하메드 살라", formation: "4-3-3", record: "1승 2무", w: 1, d: 2, l: 0, gd: +2, pts: 5 },
+            { id: "irn", name: "이란", code: "ir", group: "Group G", rank: "20위", ace: "메흐디 타레미", formation: "4-5-1", record: "3무", w: 0, d: 3, l: 0, gd: 0, pts: 3 },
+            { id: "nzl", name: "뉴질랜드", code: "nz", group: "Group G", rank: "81위", ace: "크리스 우드", formation: "4-5-1", record: "1무 2패", w: 0, d: 1, l: 2, gd: -6, pts: 1 },
+
+            { id: "esp", name: "스페인", code: "es", group: "Group H", rank: "8위", ace: "라민 야말", formation: "4-3-3", record: "2승 1무", w: 2, d: 1, l: 0, gd: +5, pts: 7 },
+            { id: "cpv", name: "카보베르데", code: "cv", group: "Group H", rank: "65위", ace: "라이언 멘데스", formation: "4-3-3", record: "3무", w: 0, d: 3, l: 0, gd: 0, pts: 3 },
+            { id: "uru", name: "우루과이", code: "uy", group: "Group H", rank: "14위", ace: "페데리코 발베르데", formation: "4-3-3", record: "2무 1패", w: 0, d: 2, l: 1, gd: -1, pts: 2 },
+            { id: "ksa", name: "사우디", code: "sa", group: "Group H", rank: "53위", ace: "살렘 알 도사리", formation: "2무 1패", w: 0, d: 2, l: 1, gd: -4, pts: 2 },
+
+            { id: "fra", name: "프랑스", code: "fr", group: "Group I", rank: "2위", ace: "킬리안 음바페", formation: "4-2-3-1", record: "3승", w: 3, d: 0, l: 0, gd: +8, pts: 9 },
+            { id: "nor", name: "노르웨이", code: "no", group: "Group I", rank: "44위", ace: "엘링 홀란드", formation: "4-3-3", record: "2승 1패", w: 2, d: 0, l: 1, gd: +1, pts: 6 },
+            { id: "sen", name: "세네갈", code: "sn", group: "Group I", rank: "21위", ace: "사디오 마네", formation: "4-3-3", record: "1승 2패", w: 1, d: 0, l: 2, gd: +2, pts: 3 },
+            { id: "irq", name: "이라크", code: "iq", group: "Group I", rank: "58위", ace: "아이만 후세인", formation: "4-4-2", record: "3패", w: 0, d: 0, l: 3, gd: -11, pts: 0 },
+
+            { id: "arg", name: "아르헨티나", code: "ar", group: "Group J", rank: "1위", ace: "리오넬 메시", formation: "4-3-3", record: "3승", w: 3, d: 0, l: 0, gd: +7, pts: 9 },
+            { id: "aut", name: "오스트리아", code: "at", group: "Group J", rank: "25위", ace: "콘라트 라이머", formation: "4-2-2-2", record: "1승 1무 1패", w: 1, d: 1, l: 1, gd: 0, pts: 4 },
+            { id: "alg", name: "알제리", code: "dz", group: "Group J", rank: "43위", ace: "리야드 마레즈", formation: "4-1-4-1", record: "1승 1무 1패", w: 1, d: 1, l: 1, gd: -2, pts: 4 },
+            { id: "jor", name: "요르단", code: "jo", group: "Group J", rank: "68위", ace: "무사 알 타마리", formation: "5-4-1", record: "3패", w: 0, d: 0, l: 3, gd: -5, pts: 0 },
+
+            { id: "col", name: "콜롬비아", code: "co", group: "Group K", rank: "12위", ace: "루이스 디아스", formation: "4-2-3-1", record: "2승 1무", w: 2, d: 1, l: 0, gd: +3, pts: 7 },
+            { id: "por", name: "포르투갈", code: "pt", group: "Group K", rank: "10위", ace: "브루노 페르난데스", formation: "4-3-3", record: "1승 2무", w: 1, d: 2, l: 0, gd: +5, pts: 5 },
+            { id: "cod", name: "DR콩고", code: "cd", group: "Group K", rank: "62위", ace: "요안 위사", formation: "4-4-2", record: "1승 1무 1패", w: 1, d: 1, l: 1, gd: +1, pts: 4 },
+            { id: "uzb", name: "우즈베크", code: "uz", group: "Group K", rank: "60위", ace: "엘도르 쇼무로도프", best: "조별리그 진출", record: "3패", w: 0, d: 0, l: 3, gd: -9, pts: 0 },
+
+            { id: "eng", name: "잉글랜드", code: "gb-eng", group: "Group L", rank: "4위", ace: "주드 벨링엄", formation: "4-2-3-1", record: "2승 1무", w: 2, d: 1, l: 0, gd: +4, pts: 7 },
+            { id: "cro", name: "크로아티아", code: "hr", group: "Group L", rank: "9위", ace: "루카 모드리치", best: "준우승 (2018)", record: "2승 1패", w: 2, d: 0, l: 1, gd: 0, pts: 6 },
+            { id: "gha", name: "가나", code: "gh", group: "Group L", rank: "64위", ace: "모하메드 쿠두스", formation: "4-3-3", record: "1승 1무 1패", w: 1, d: 1, l: 1, gd: 0, pts: 4 },
+            { id: "pan", name: "파나마", code: "pa", group: "Group L", rank: "55위", ace: "아달베르토 카라스키야", formation: "4-5-1", record: "3패", w: 0, d: 0, l: 3, gd: -4, pts: 0 }
+        ];
+
+        // 12개 조별 테이블 생성기
+        function renderGroupsTable() {
+            const container = document.getElementById('groupsTableContainer');
+            container.innerHTML = '';
+
+            const wildCards = ["bih", "par", "ecu", "swe", "sen", "alg", "cod", "gha"];
+
+            groupsArr.forEach(letter => {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'bg-slate-900/60 border border-slate-800 rounded-3xl p-6 shadow-xl';
+                
+                const groupTeams = nationsData.filter(team => team.group === `Group ${letter}`);
+                groupTeams.sort((a,b) => b.pts - a.pts || b.gd - a.gd);
+
+                let rowsHtml = '';
+                groupTeams.forEach((team, idx) => {
+                    let rowStyle = '';
+                    let badge = '';
+
+                    if(idx < 2) {
+                        rowStyle = 'class="bg-emerald-500/5"';
+                        badge = `<span class="text-[9px] font-bold text-wcGreen border border-wcGreen/20 bg-wcGreen/5 px-1.5 py-0.5 rounded-md">32강 직행</span>`;
+                    } else if (wildCards.includes(team.id)) {
+                        rowStyle = 'class="bg-cyan-500/5"';
+                        badge = `<span class="text-[9px] font-bold text-wcBlue border border-wcBlue/20 bg-wcBlue/5 px-1.5 py-0.5 rounded-md">와일드카드</span>`;
+                    }
+
+                    // FlagCDN 국기 연동 추가
+                    const flagUrl = `https://flagcdn.com/w160/${team.code}.png`;
+
+                    rowsHtml += `
+                        <tr ${rowStyle} class="border-b border-slate-800/60 hover:bg-slate-800/30 transition-all text-xs">
+                            <td class="px-3 py-3.5 text-center font-bold text-slate-400">${idx + 1}</td>
+                            <td class="px-3 py-3.5 font-bold text-white flex items-center gap-2">
+                                <img class="w-6 h-4 object-cover rounded shadow-sm" src="${flagUrl}" alt="${team.name}" onerror="this.src='https://placehold.co/80x50/162238/ffffff?text=${team.name}'">
+                                <span>${team.name}</span>
+                                ${badge}
+                            </td>
+                            <td class="px-3 py-3.5 text-center text-slate-300">3</td>
+                            <td class="px-3 py-3.5 text-center text-slate-300">${team.w}</td>
+                            <td class="px-3 py-3.5 text-center text-slate-300">${team.d}</td>
+                            <td class="px-3 py-3.5 text-center text-slate-300">${team.l}</td>
+                            <td class="px-3 py-3.5 text-center text-slate-300">${team.gd > 0 ? '+' + team.gd : team.gd}</td>
+                            <td class="px-3 py-3.5 text-center font-black text-wcGreen">${team.pts}</td>
+                        </tr>
+                    `;
+                });
+
+                wrapper.innerHTML = `
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
+                        <h3 class="text-base font-black text-transparent bg-clip-text bg-gradient-to-r from-wcGreen to-wcBlue">Group ${letter}조</h3>
+                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">최종 성적 완료</span>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs">
+                            <thead>
+                                <tr class="text-slate-500 border-b border-slate-800/40 text-[10px] uppercase">
+                                    <th class="px-3 py-2 text-center w-12">순위</th>
+                                    <th class="px-3 py-2">국가</th>
+                                    <th class="px-3 py-2 text-center">경기</th>
+                                    <th class="px-3 py-2 text-center">승</th>
+                                    <th class="px-3 py-2 text-center">무</th>
+                                    <th class="px-3 py-2 text-center">패</th>
+                                    <th class="px-3 py-2 text-center">득실차</th>
+                                    <th class="px-3 py-2 text-center">승점</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${rowsHtml}
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+
+                container.appendChild(wrapper);
+            });
+        }
+
+        window.onload = () => {
+            renderGroupsTable();
+        }
+
+        // 모바일 메뉴 제어 로직
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+            } else {
+                menu.classList.add('hidden');
+                icon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            }
+        });
+    </script>
+</body>
+</html>

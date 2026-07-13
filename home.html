@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 FIFA 북중미 월드컵 포털 - 홈</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome 아이콘 CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans KR', 'sans-serif'],
+                    },
+                    colors: {
+                        wcGreen: '#00FF87',
+                        wcBlue: '#00F0FF',
+                        wcDark: '#0B111E',
+                        wcCard: '#162238'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glowing-border {
+            box-shadow: 0 0 15px rgba(0, 255, 135, 0.25);
+        }
+        body {
+            background-color: #0B111E;
+        }
+    </style>
+</head>
+<body class="text-white min-h-screen flex flex-col justify-between">
+
+    <!-- [공통 네비게이션 바] -->
+    <nav class="bg-slate-900 border-b border-cyan-500/30 sticky top-0 z-50 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- 로고 / 타이틀 -->
+                <div class="flex items-center gap-3">
+                    <span class="text-2xl animate-bounce">🏆</span>
+                    <a href="index.html" class="font-black text-transparent bg-clip-text bg-gradient-to-r from-wcGreen to-wcBlue tracking-wider text-lg">
+                        2026 WORLD CUP
+                    </a>
+                </div>
+
+                <!-- 데스크톱 메뉴 -->
+                <div class="hidden md:flex items-center space-x-2">
+                    <a href="index.html" class="px-4 py-2 rounded-md text-sm font-semibold transition-all duration-200 bg-emerald-500/10 text-wcGreen border border-wcGreen/20">홈</a>
+                    <a href="intro.html" class="px-4 py-2 rounded-md text-sm font-semibold transition-all duration-200 text-slate-400 hover:text-white hover:bg-slate-800">소개</a>
+                    <a href="teams.html" class="px-4 py-2 rounded-md text-sm font-semibold transition-all duration-200 text-slate-400 hover:text-white hover:bg-slate-800">48개국 소개</a>
+                    <a href="groups.html" class="px-4 py-2 rounded-md text-sm font-semibold transition-all duration-200 text-slate-400 hover:text-white hover:bg-slate-800">조별리그 결과</a>
+                    <a href="tournament.html" class="px-4 py-2 rounded-md text-sm font-semibold transition-all duration-200 text-slate-400 hover:text-white hover:bg-slate-800">토너먼트 결과</a>
+                </div>
+
+                <!-- 모바일 햄버거 버튼 -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-cyan-400 hover:bg-slate-800 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모바일 드롭다운 메뉴 -->
+        <div class="hidden md:hidden bg-slate-950 border-b border-cyan-500/20" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-wcGreen bg-emerald-500/10">홈</a>
+                <a href="intro.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white">소개</a>
+                <a href="teams.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white">48개국 소개</a>
+                <a href="groups.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white">조별리그 결과</a>
+                <a href="tournament.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white">토너먼트 결과</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 메인 컨텐츠 영역 -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+        <div class="relative rounded-3xl overflow-hidden bg-gradient-to-r from-slate-900 via-slate-950 to-slate-900 border border-slate-800 p-8 sm:p-12 mb-12 shadow-2xl glowing-border">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,240,255,0.15),transparent)] pointer-events-none"></div>
+            <div class="relative z-10 max-w-3xl">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-emerald-500/10 text-wcGreen text-xs font-black tracking-widest uppercase mb-6 border border-wcGreen/20">
+                    <i class="fa-solid fa-signal mr-1.5 animate-pulse"></i> LIVE: 대회 대망의 4강 준결승 돌입!
+                </span>
+                <h1 class="text-4xl sm:text-6xl font-black text-white leading-tight tracking-tight mb-6">
+                    세 개의 나라, <br>48개의 열정, <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-wcGreen to-wcBlue">하나의 포털.</span>
+                </h1>
+                <p class="text-slate-400 text-lg font-light mb-8 leading-relaxed">
+                    역사상 최초로 캐나다, 멕시코, 미국에서 공동 개최되는 <span class="text-white font-semibold">2026 FIFA 북중미 월드컵</span>의 실시간 전적 데이터와 국가별 심도 깊은 스쿼드를 한눈에 트래킹할 수 있는 공식 검증 포털에 오신 것을 환영합니다.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="teams.html" class="bg-gradient-to-r from-wcGreen to-emerald-400 text-slate-950 font-extrabold px-8 py-4 rounded-xl shadow-lg hover:shadow-emerald-500/20 hover:-translate-y-0.5 transition-all duration-200">
+                        <i class="fa-solid fa-globe mr-2"></i> 48개국 백과사전 탐색
+                    </a>
+                    <a href="tournament.html" class="bg-slate-800 hover:bg-slate-700 text-white font-bold px-8 py-4 rounded-xl border border-slate-700 transition-all duration-200">
+                        토너먼트 결과 보기 <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 핵심 현황 요약 타일 -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+            <div class="bg-slate-900/60 border border-slate-800 p-6 rounded-2xl flex items-center gap-4">
+                <span class="text-4xl text-wcGreen"><i class="fa-solid fa-flag"></i></span>
+                <div>
+                    <h3 class="text-2xl font-black">48</h3>
+                    <p class="text-xs text-slate-500 uppercase tracking-widest">본선 진출국</p>
+                </div>
+            </div>
+            <div class="bg-slate-900/60 border border-slate-800 p-6 rounded-2xl flex items-center gap-4">
+                <span class="text-4xl text-wcBlue"><i class="fa-solid fa-list-ol"></i></span>
+                <div>
+                    <h3 class="text-2xl font-black">12</h3>
+                    <p class="text-xs text-slate-500 uppercase tracking-widest">조별 예선 그룹 (A~L)</p>
+                </div>
+            </div>
+            <div class="bg-slate-900/60 border border-slate-800 p-6 rounded-2xl flex items-center gap-4">
+                <span class="text-4xl text-amber-400"><i class="fa-solid fa-map-location-dot"></i></span>
+                <div>
+                    <h3 class="text-2xl font-black">16</h3>
+                    <p class="text-xs text-slate-500 uppercase tracking-widest">북중미 개최 도시</p>
+                </div>
+            </div>
+            <div class="bg-slate-900/60 border border-slate-800 p-6 rounded-2xl flex items-center gap-4">
+                <span class="text-4xl text-rose-500"><i class="fa-solid fa-trophy"></i></span>
+                <div>
+                    <h3 class="text-2xl font-black">4강</h3>
+                    <p class="text-xs text-slate-500 uppercase tracking-widest">현재 토너먼트 단계</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 실시간 라이브 피드 보드 -->
+        <div class="bg-slate-900/40 border border-slate-800 rounded-3xl p-6 sm:p-8 backdrop-blur-md">
+            <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
+                <h2 class="text-xl font-bold flex items-center gap-2">
+                    <span class="inline-block w-2.5 h-2.5 bg-rose-500 rounded-full animate-ping"></span>
+                    실시간 월드컵 속보 브리핑
+                </h2>
+                <span class="text-xs text-slate-400">대회 준결승 단계</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 hover:border-wcGreen/30 transition-all cursor-pointer" onclick="location.href='tournament.html'">
+                    <span class="text-[10px] uppercase font-bold text-wcGreen tracking-widest bg-emerald-500/10 px-2.5 py-1 rounded-md">8강 종합 결과</span>
+                    <h4 class="text-base font-bold mt-3 mb-2">프랑스·스페인·잉글랜드·아르헨티나 대망의 4강 진출 완료!</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">벨기에, 노르웨이, 스위스, 모로코가 피 말리는 격전 끝에 탈락하고, 최고의 명문 4개국이 결승행 길목인 준결승 무대에서 역사적인 결전을 준비합니다.</p>
+                </div>
+                <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 hover:border-wcBlue/30 transition-all cursor-pointer" onclick="location.href='tournament.html'">
+                    <span class="text-[10px] uppercase font-bold text-wcBlue tracking-widest bg-cyan-500/10 px-2.5 py-1 rounded-md">4강전 예고</span>
+                    <h4 class="text-base font-bold mt-3 mb-2">[준결승 빅매치] 프랑스 vs 스페인, 잉글랜드 vs 아르헨티나 확정</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">양대 축구 대륙을 대표하는 초대형 스펙타클이 각각 달라스와 애틀랜타 스타디움에서 내일부터 순차적으로 라이브 킥오프됩니다.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="bg-slate-950 border-t border-slate-900 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-slate-500 text-xs">
+            <p class="mb-2">&copy; 2026 FIFA World Cup 48-Nations Portal. All Rights Reserved.</p>
+            <p>본 사이트는 2026 북중미 월드컵 데이터의 실시간 고증을 전하는 공식 포털 프로토타입입니다.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 모바일 메뉴 토글 로직
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+            } else {
+                menu.classList.add('hidden');
+                icon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            }
+        });
+    </script>
+</body>
+</html>

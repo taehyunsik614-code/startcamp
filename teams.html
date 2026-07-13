@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 FIFA 북중미 월드컵 포털 - 48개국 소개</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome 아이콘 CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans KR', 'sans-serif'],
+                    },
+                    colors: {
+                        wcGreen: '#00FF87',
+                        wcBlue: '#00F0FF',
+                        wcDark: '#0B111E',
+                        wcCard: '#162238'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="text-white min-h-screen flex flex-col justify-between bg-[#0B111E]">
+
+    <!-- [공통 네비게이션 바] -->
+    <nav class="bg-slate-900 border-b border-cyan-500/30 sticky top-0 z-50 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- 로고 / 타이틀 -->
+                <div class="flex items-center gap-3">
+                    <span class="text-2xl animate-bounce">🏆</span>
+                    <a href="index.html" class="font-black text-transparent bg-clip-text bg-gradient-to-r from-wcGreen to-wcBlue tracking-wider text-lg">
+                        2026 WORLD CUP
+                    </a>
+                </div>
+
+                <!-- 데스크톱 메뉴 -->
+                <div class="hidden md:flex items-center space-x-2">
+                    <a href="index.html" class="px-4 py-2 rounded-md text-sm font-semibold transition-all duration-200 text-slate-400 hover:text-white hover:bg-slate-800">홈</a>
+                    <a href="intro.html" class="px-4 py-2 rounded-md text-sm font-semibold transition-all duration-200 text-slate-400 hover:text-white hover:bg-slate-800">소개</a>
+                    <a href="teams.html" class="px-4 py-2 rounded-md text-sm font-semibold transition-all duration-200 bg-emerald-500/10 text-wcGreen border border-wcGreen/20">48개국 소개</a>
+                    <a href="groups.html" class="px-4 py-2 rounded-md text-sm font-semibold transition-all duration-200 text-slate-400 hover:text-white hover:bg-slate-800">조별리그 결과</a>
+                    <a href="tournament.html" class="px-4 py-2 rounded-md text-sm font-semibold transition-all duration-200 text-slate-400 hover:text-white hover:bg-slate-800">토너먼트 결과</a>
+                </div>
+
+                <!-- 모바일 햄버거 버튼 -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-cyan-400 hover:bg-slate-800 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모바일 드롭다운 메뉴 -->
+        <div class="hidden md:hidden bg-slate-950 border-b border-cyan-500/20" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white">홈</a>
+                <a href="intro.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white">소개</a>
+                <a href="teams.html" class="block px-3 py-2 rounded-md text-base font-medium text-wcGreen bg-emerald-500/10">48개국 소개</a>
+                <a href="groups.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white">조별리그 결과</a>
+                <a href="tournament.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white">토너먼트 결과</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 메인 컨텐츠 영역 -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+        <h2 class="text-3xl sm:text-5xl font-black mb-3">48개국 <span>참가 데이터 사전</span></h2>
+        <p class="text-slate-400 text-sm sm:text-base font-light mb-8">
+            원하는 참가국을 국기 또는 이름으로 클릭하여 피파 랭킹, 역대 월드컵 최고 성적, 대표 에이스 등의 정밀 고증 데이터를 실시간 모달로 확인하세요.
+        </p>
+
+        <!-- 필터 컨트롤러 영역 -->
+        <div class="flex flex-col md:flex-row gap-4 bg-slate-900/60 p-5 rounded-2xl border border-slate-800 mb-8 items-center">
+            <input type="text" id="teamSearch" oninput="filterTeams()" placeholder="국가명을 직접 입력하여 찾아보세요... (예: 대한민국, 프랑스)" class="flex-1 w-full bg-slate-950 text-sm text-white placeholder-slate-500 px-5 py-3 rounded-xl border border-slate-800 focus:outline-none focus:border-wcGreen focus:ring-1 focus:ring-wcGreen transition-all">
+            
+            <select id="groupFilter" onchange="filterTeams()" class="w-full md:w-60 bg-slate-950 text-sm text-white px-5 py-3 rounded-xl border border-slate-800 focus:outline-none focus:border-wcGreen cursor-pointer">
+                <option value="ALL">모든 조 보기 (Group ALL)</option>
+                <option value="Group A">A조</option>
+                <option value="Group B">B조</option>
+                <option value="Group C">C조</option>
+                <option value="Group D">D조</option>
+                <option value="Group E">E조</option>
+                <option value="Group F">F조</option>
+                <option value="Group G">G조</option>
+                <option value="Group H">H조</option>
+                <option value="Group I">I조</option>
+                <option value="Group J">J조</option>
+                <option value="Group K">K조</option>
+                <option value="Group L">L조</option>
+            </select>
+        </div>
+
+        <!-- 48개국 그리드 -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4" id="teamsGrid">
+            <!-- JS 동적 인젝션 -->
+        </div>
+    </main>
+
+    <!-- 국가 상세정보 모달 팝업 인프라 -->
+    <div class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden" id="modalOverlay" onclick="closeModal(event)">
+        <div class="bg-slate-900 border border-slate-800 w-full max-w-lg rounded-3xl overflow-hidden shadow-2xl transform scale-95 transition-all duration-300" onclick="event.stopPropagation()">
+            <div class="bg-slate-950 px-6 py-6 border-b border-slate-800 flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <img class="w-16 h-10 object-cover rounded shadow" id="mFlag" src="" alt="국기">
+                    <div>
+                        <h3 class="text-2xl font-black" id="mName">미국</h3>
+                        <p class="text-xs text-wcGreen font-bold" id="mGroup">Group A</p>
+                    </div>
+                </div>
+                <button class="text-slate-400 hover:text-white text-3xl" onclick="closeModal(null)">&times;</button>
+            </div>
+            <div class="p-6 space-y-4 text-sm" id="modalBody">
+                <!-- JS가 정보를 매핑 -->
+            </div>
+            <div class="bg-slate-950 border-t border-slate-800 px-6 py-4 flex justify-end">
+                <button onclick="closeModal(null)" class="bg-wcGreen hover:bg-emerald-400 text-slate-950 font-black px-6 py-2.5 rounded-xl transition">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 푸터 -->
+    <footer class="bg-slate-950 border-t border-slate-900 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-slate-500 text-xs">
+            <p class="mb-2">&copy; 2026 FIFA World Cup 48-Nations Portal. All Rights Reserved.</p>
+            <p>본 사이트는 2026 북중미 월드컵 데이터의 실시간 고증을 전하는 공식 포털 프로토타입입니다.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 고증 데이터셋 구조 및 FlagCDN 코드 매핑 (월드컵 최고 성적 추가 고증 완료)
+        const nationsData = [
+            { id: "kor", name: "대한민국", code: "kr", group: "Group A", rank: "22위", ace: "손흥민", best: "4강 (2002)", record: "1승 2패 (A조 3위 탈락)" },
+            { id: "mex", name: "멕시코", code: "mx", group: "Group A", rank: "15위", ace: "산티아고 히메네스", best: "8강 (1970, 1986)", record: "2승 1패 (A조 1위 진출)" },
+            { id: "rsa", name: "남아공", code: "za", group: "Group A", rank: "59위", ace: "퍼시 타우", best: "조별리그 진출", record: "1승 1무 1패 (A조 2위 진출)" },
+            { id: "cze", name: "체코", code: "cz", group: "Group A", rank: "40위", ace: "파트리크 시크", best: "준우승 (1934, 1962)", record: "1무 2패 (A조 4위 탈락)" },
+            
+            { id: "sui", name: "스위스", code: "ch", group: "Group B", rank: "19위", ace: "그라니트 자카", best: "8강 (1934, 1938, 1954)", record: "2승 1무 (B조 1위 진출)" },
+            { id: "can", name: "캐나다", code: "ca", group: "Group B", rank: "49위", ace: "알폰소 데이비스", best: "조별리그 진출", record: "1승 1무 1패 (B조 2위 진출)" },
+            { id: "bih", name: "보스니아", code: "ba", group: "Group B", rank: "74위", ace: "에딘 제코", best: "조별리그 진출", record: "1승 1무 1패 (B조 3위 W.C 진출)" },
+            { id: "qat", name: "카타르", code: "qa", group: "Group B", rank: "34위", ace: "아크람 아피프", best: "조별리그 진출", record: "1무 2패 (B조 4위 탈락)" },
+
+            { id: "bra", name: "브라질", code: "br", group: "Group C", rank: "5위", ace: "비니시우스 주니어", best: "우승 (5회)", record: "2승 1무 (C조 1위 진출)" },
+            { id: "mar", name: "모로코", code: "ma", group: "Group C", rank: "13위", ace: "아슈라프 하키미", best: "4강 (2022)", record: "2승 1무 (C조 2위 진출)" },
+            { id: "sco", name: "스코틀랜드", code: "gb-sct", group: "Group C", rank: "39위", ace: "스콧 맥토미니", best: "조별리그 진출", record: "1승 2패 (C조 3위 탈락)" },
+            { id: "hai", name: "아이티", code: "ht", group: "Group C", rank: "86위", ace: "프란츠디 피에로", best: "조별리그 진출", record: "3패 (C조 4위 탈락)" },
+
+            { id: "usa", name: "미국", code: "us", group: "Group D", rank: "11위", ace: "크리스천 풀리식", best: "8강 (2002)", record: "2승 1패 (D조 1위 진출)" },
+            { id: "aus", name: "호주", code: "au", group: "Group D", rank: "23위", ace: "잭슨 어바인", best: "16강 (2006, 2022)", record: "1승 1무 1패 (D조 2위 진출)" },
+            { id: "par", name: "파라과이", code: "py", group: "Group D", rank: "56위", ace: "미구엘 알미론", best: "8강 (2010)", record: "1승 1무 1패 (D조 3위 W.C 진출)" },
+            { id: "tur", name: "터키", code: "tr", group: "Group D", rank: "35위", ace: "아르다 귈러", best: "4강 (2002)", record: "1승 2패 (D조 4위 탈락)" },
+
+            { id: "ger", name: "독일", code: "de", group: "Group E", rank: "16위", ace: "자말 무시아라", best: "우승 (4회)", record: "2승 1패 (E조 1위 진출)" },
+            { id: "civ", name: "코트디부아르", code: "ci", group: "Group E", rank: "38위", ace: "세바스티앙 알레", best: "조별리그 진출", record: "2승 1패 (E조 2위 진출)" },
+            { id: "ecu", name: "에콰도르", code: "ec", group: "Group E", rank: "30위", ace: "모이세스 카이세도", best: "16강 (2006)", record: "1승 1무 1패 (E조 3위 W.C 진출)" },
+            { id: "cur", name: "퀴라소", code: "cw", group: "Group E", rank: "85위", ace: "레안드로 바쿠나", best: "조별리그 진출", record: "1무 2패 (E조 4위 탈락)" },
+
+            { id: "ned", name: "네덜란드", code: "nl", group: "Group F", rank: "7위", ace: "버질 반 다이크", best: "준우승 (1974, 1978, 2010)", record: "2승 1무 (F조 1위 진출)" },
+            { id: "jpn", name: "일본", code: "jp", group: "Group F", rank: "17위", ace: "쿠보 타케후사", best: "16강 (4회)", record: "1승 2무 (F조 2위 진출)" },
+            { id: "swe", name: "스웨덴", code: "se", group: "Group F", rank: "28위", ace: "알렉산더 이삭", best: "준우승 (1958)", record: "1승 1무 1패 (F조 3위 W.C 진출)" },
+            { id: "tun", name: "튀니지", code: "tn", group: "Group F", rank: "41위", ace: "엘리 스키리", best: "조별리그 진출", record: "3패 (F조 4위 탈락)" },
+
+            { id: "bel", name: "벨기에", code: "be", group: "Group G", rank: "6위", ace: "케빈 더 브라위너", best: "4강 (1986, 2018)", record: "1승 2무 (G조 1위 진출)" },
+            { id: "egy", name: "이집트", code: "eg", group: "Group G", rank: "36위", ace: "모하메드 살라", best: "조별리그 진출", record: "1승 2무 (G조 2위 진출)" },
+            { id: "irn", name: "이란", code: "ir", group: "Group G", rank: "20위", ace: "메흐디 타레미", best: "조별리그 진출", record: "3무 (G조 3위 탈락)" },
+            { id: "nzl", name: "뉴질랜드", code: "nz", group: "Group G", rank: "81위", ace: "크리스 우드", best: "조별리그 진출", record: "1무 2패 (G조 4위 탈락)" },
+
+            { id: "esp", name: "스페인", code: "es", group: "Group H", rank: "8위", ace: "라민 야말", best: "우승 (2010)", record: "2승 1무 (H조 1위 진출)" },
+            { id: "cpv", name: "카보베르데", code: "cv", group: "Group H", rank: "65위", ace: "라이언 멘데스", best: "조별리그 진출", record: "3무 (H조 2위 진출)" },
+            { id: "uru", name: "우루과이", code: "uy", group: "Group H", rank: "14위", ace: "페데리코 발베르데", best: "우승 (1930, 1950)", record: "2무 1패 (H조 3위 탈락)" },
+            { id: "ksa", name: "사우디", code: "sa", group: "Group H", rank: "53위", ace: "살렘 알 도사리", best: "16강 (1994)", record: "2무 1패 (H조 4위 탈락)" },
+
+            { id: "fra", name: "프랑스", code: "fr", group: "Group I", rank: "2위", ace: "킬리안 음바페", best: "우승 (1998, 2018)", record: "3승 (I조 1위 진출)" },
+            { id: "nor", name: "노르웨이", code: "no", group: "Group I", rank: "44위", ace: "엘링 홀란드", best: "16강 (1998)", record: "2승 1패 (I조 2위 진출)" },
+            { id: "sen", name: "세네갈", code: "sn", group: "Group I", rank: "21위", ace: "사디오 마네", best: "8강 (2002)", record: "1승 2패 (I조 3위 W.C 진출)" },
+            { id: "irq", name: "이라크", code: "iq", group: "Group I", rank: "58위", ace: "아이만 후세인", best: "조별리그 진출", record: "3패 (I조 4위 탈락)" },
+
+            { id: "arg", name: "아르헨티나", code: "ar", group: "Group J", rank: "1위", ace: "리오넬 메시", best: "우승 (3회)", record: "3승 (J조 1위 진출)" },
+            { id: "aut", name: "오스트리아", code: "at", group: "Group J", rank: "25위", ace: "콘라트 라이머", best: "4강 (1934, 1954)", record: "1승 1무 1패 (J조 2위 진출)" },
+            { id: "alg", name: "알제리", code: "dz", group: "Group J", rank: "43위", ace: "리야드 마레즈", best: "16강 (2014)", record: "1승 1무 1패 (J조 3위 W.C 진출)" },
+            { id: "jor", name: "요르단", code: "jo", group: "Group J", rank: "68위", ace: "무사 알 타마리", best: "조별리그 진출", record: "3패 (J조 4위 탈락)" },
+
+            { id: "col", name: "콜롬비아", code: "co", group: "Group K", rank: "12위", ace: "루이스 디아스", best: "8강 (2014)", record: "2승 1무 (K조 1위 진출)" },
+            { id: "por", name: "포르투갈", code: "pt", group: "Group K", rank: "10위", ace: "브루노 페르난데스", best: "4강 (1966, 2006)", record: "1승 2무 (K조 2위 진출)" },
+            { id: "cod", name: "DR콩고", code: "cd", group: "Group K", rank: "62위", ace: "요안 위사", best: "조별리그 진출", record: "1승 1무 1패 (K조 3위 W.C 진출)" },
+            { id: "uzb", name: "우즈베크", code: "uz", group: "Group K", rank: "60위", ace: "엘도르 쇼무로도프", best: "조별리그 진출", record: "3패 (K조 4위 탈락)" },
+
+            { id: "eng", name: "잉글랜드", code: "gb-eng", group: "Group L", rank: "4위", ace: "주드 벨링엄", best: "우승 (1966)", record: "2승 1무 (L조 1위 진출)" },
+            { id: "cro", name: "크로아티아", code: "hr", group: "Group L", rank: "9위", ace: "루카 모드리치", best: "준우승 (2018)", record: "2승 1패 (L조 2위 진출)" },
+            { id: "gha", name: "가나", code: "gh", group: "Group L", rank: "64위", ace: "모하메드 쿠두스", best: "8강 (2010)", record: "1승 1무 1패 (L조 3위 W.C 진출)" },
+            { id: "pan", name: "파나마", code: "pa", group: "Group L", rank: "55위", ace: "아달베르토 카라스키야", best: "조별리그 진출", record: "3패 (L조 4위 탈락)" }
+        ];
+
+        // 48개국 렌더링 함수
+        function renderTeams(dataset = nationsData) {
+            const grid = document.getElementById('teamsGrid');
+            grid.innerHTML = '';
+            
+            if(dataset.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full py-16 text-center text-slate-500 text-sm">
+                        <i class="fa-solid fa-folder-open text-4xl mb-3 text-amber-500"></i>
+                        <p>검색 조건에 부합하는 국가 데이터가 존재하지 않습니다.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            dataset.forEach(team => {
+                const button = document.createElement('button');
+                button.onclick = () => openModal(team);
+                button.className = "bg-slate-900/60 border border-slate-800 hover:border-wcGreen rounded-2xl p-4 flex flex-col items-center justify-center text-center cursor-pointer transform hover:-translate-y-1 transition-all duration-200 group relative overflow-hidden shadow-md";
+                
+                const flagUrl = `https://flagcdn.com/w160/${team.code}.png`;
+
+                button.innerHTML = `
+                    <div class="absolute top-2 right-2.5 text-[9px] text-wcGreen font-bold bg-wcGreen/10 px-1.5 py-0.5 rounded uppercase">
+                        ${team.group.replace("Group ", "")}조
+                    </div>
+                    <div class="w-20 h-12 my-3 rounded-md overflow-hidden border border-slate-700/60 shadow group-hover:scale-105 transition-transform duration-200">
+                        <img class="w-full h-full object-cover" src="${flagUrl}" alt="${team.name} 국기" onerror="this.src='https://placehold.co/160x100/162238/ffffff?text=${team.name}'">
+                    </div>
+                    <h4 class="text-sm font-bold text-white group-hover:text-wcGreen transition-all mt-1">
+                        ${team.name}
+                    </h4>
+                    <p class="text-[10px] text-slate-500 mt-1">
+                        FIFA ${team.rank}
+                    </p>
+                `;
+                grid.appendChild(button);
+            });
+        }
+
+        // 검색 및 조 필터 엔진
+        function filterTeams() {
+            const keyword = document.getElementById('teamSearch').value.trim().toLowerCase();
+            const group = document.getElementById('groupFilter').value;
+
+            const filtered = nationsData.filter(team => {
+                const matchKeyword = team.name.toLowerCase().includes(keyword);
+                const matchGroup = (group === 'ALL' || team.group === group);
+                return matchKeyword && matchGroup;
+            });
+
+            renderTeams(filtered);
+        }
+
+        // 모달 관리 로직
+        function openModal(team) {
+            document.getElementById('mFlag').src = `https://flagcdn.com/w160/${team.code}.png`;
+            document.getElementById('mName').innerText = team.name;
+            document.getElementById('mGroup').innerText = `${team.group} 상세 프로필`;
+
+            const body = document.getElementById('modalBody');
+            body.innerHTML = `
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <span class="text-xs text-slate-500 block mb-1">피파 공식 랭킹</span>
+                        <strong class="text-sm text-white">${team.rank}</strong>
+                    </div>
+                    <div>
+                        <span class="text-xs text-slate-500 block mb-1">대표 에이스 키 플레이어</span>
+                        <strong class="text-sm text-wcGreen">${team.ace}</strong>
+                    </div>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex justify-between border-b border-slate-800 pb-2">
+                        <span class="text-slate-400 text-xs">역대 월드컵 최고 성적</span>
+                        <span class="font-bold text-emerald-400 text-xs">${team.best}</span>
+                    </div>
+                    <div class="flex justify-between border-b border-slate-800 pb-2">
+                        <span class="text-slate-400 text-xs">2026 월드컵 최종 매칭 기록</span>
+                        <span class="font-bold text-wcBlue text-xs">${team.record}</span>
+                    </div>
+                </div>
+            `;
+
+            const modal = document.getElementById('modalOverlay');
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal(e) {
+            if(!e || e.target === document.getElementById('modalOverlay') || e.target.className.includes('close-modal')) {
+                document.getElementById('modalOverlay').classList.add('hidden');
+            }
+        }
+
+        window.onload = () => {
+            renderTeams();
+        }
+
+        // 모바일 메뉴 제어 로직
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+            } else {
+                menu.classList.add('hidden');
+                icon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            }
+        });
+    </script>
+</body>
+</html>
